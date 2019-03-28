@@ -1,5 +1,6 @@
 package com.example.sacwp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListCar extends AppCompatActivity implements RecyclerAdapter.ItemClicked {
+    public static final String ICO_KEY = "Ico key ";
+
     RecyclerAdapter adapter;
     RecyclerView recyclerView;
     private List<RecyclerItem> list;
@@ -110,6 +113,8 @@ public class ListCar extends AppCompatActivity implements RecyclerAdapter.ItemCl
 
     @Override
     public void itemClickedCallback(int itemPosition) {
-
+        Intent intent = new Intent(this, SecondActivity.class);
+        intent.putExtra(ICO_KEY, list.get(itemPosition).getIco());
+        startActivity(intent);
     }
 }
