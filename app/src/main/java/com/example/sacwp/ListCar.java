@@ -28,6 +28,7 @@ public class ListCar extends AppCompatActivity implements RecyclerAdapter.ItemCl
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new RecyclerAdapter(list, this);
         recyclerView.setAdapter(adapter);
+
     }
 
     private List<RecyclerItem> generateList() {
@@ -115,6 +116,7 @@ public class ListCar extends AppCompatActivity implements RecyclerAdapter.ItemCl
     public void itemClickedCallback(int itemPosition) {
         Intent intent = new Intent(this, SecondActivity.class);
         intent.putExtra(ICO_KEY, list.get(itemPosition).getIco());
+        intent.putExtra("sname" , getIntent().getStringExtra("fname"));
         startActivity(intent);
     }
 }

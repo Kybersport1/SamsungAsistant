@@ -5,12 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_bright"
     tools:context=".MainActivity" >
 
     <Button
         android:id="@+id/Go"
-        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -19,9 +17,9 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="106dp"
-        android:background="@color/yellow"
+        android:background="@color/colorPrimary"
         android:text="Поехали !"
-        android:textColor="@color/maroon"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -38,7 +36,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="52dp"
         android:text="Начало"
-        android:textColor="@color/maroon"
+        android:textColor="@color/colorBlack"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/editName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,7 +51,7 @@
         android:layout_marginTop="64dp"
         android:layout_marginBottom="46dp"
         android:text="Укажите своё имя :"
-        android:textColor="@color/maroon"
+        android:textColor="@color/colorBlack"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textViewCar"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,6 +60,7 @@
 
     <EditText
         android:id="@+id/editName"
+        style="@android:style/Widget.Holo.Light.EditText"
         android:layout_width="174dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -69,16 +68,17 @@
         android:layout_marginTop="112dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+        android:autofillHints=""
+        android:digits="ABCDEFGHIJKLMNOPQRSTVUWXYZabcdefghijklmnopqrstuvwxyzабвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
         android:ems="10"
         android:hint="@string/name"
         android:inputType="textPersonName"
+        android:maxLength="12"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textViewName"
-        app:layout_constraintTop_toTopOf="parent"
-        android:digits="ABCDEFGHIJKLMNOPQRSTVUWXYZabcdefghijklmnopqrstuvwxyzабвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
-        android:maxLength="8"
-        android:autofillHints="" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewCar"
@@ -90,7 +90,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="Укажите тип машины :"
-        android:textColor="@color/maroon"
+        android:textColor="@color/colorBlack"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.075"
@@ -99,6 +99,7 @@
 
     <RadioButton
         android:id="@+id/radioButtonSedan"
+        style="@android:style/Widget.Material.Light.CompoundButton.RadioButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -108,7 +109,6 @@
         android:layout_marginRight="8dp"
         android:checked="false"
         android:text="Повседневный седан"
-        android:textColor="@color/maroon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
@@ -116,6 +116,7 @@
 
     <RadioButton
         android:id="@+id/radioButtonVnedoro"
+        style="@android:style/Widget.Material.Light.CompoundButton.RadioButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -124,13 +125,13 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="Заедлый внедорожник"
-        android:textColor="@color/maroon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioButtonSedan" />
 
     <RadioButton
         android:id="@+id/radioButtonGryz"
+        style="@android:style/Widget.Material.Light.CompoundButton.RadioButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -140,7 +141,6 @@
         android:layout_marginRight="8dp"
         android:checked="false"
         android:text="Грузовой автомобиль"
-        android:textColor="@color/maroon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"

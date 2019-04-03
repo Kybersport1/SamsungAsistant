@@ -11,6 +11,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
@@ -61,12 +63,25 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!editText.getText().toString().isEmpty()){
+                if(editText.getText().toString().isEmpty()){
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "Заполните пожалуйста поле!", Toast.LENGTH_SHORT);
+                    toast.show();
+                }else if(sedan.isChecked()==false && gryz.isChecked()==false && vnedoro.isChecked() == false){
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "Выберите пожалуйста тип!", Toast.LENGTH_SHORT);
+                    toast.show();
+                }else{
                     Intent intent = new Intent(MainActivity.this, ListCar.class);
+                    intent.putExtra("fname", editText.getText().toString());
                     startActivity(intent);
                 }
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+
     }
 
 }
