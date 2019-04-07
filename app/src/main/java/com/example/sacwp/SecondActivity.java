@@ -38,16 +38,8 @@ public class SecondActivity extends AppCompatActivity {
     public final String APPID = "693bc5884d2a585cdb170d137f0da55a";
     public final String UNITS = "metric";
     public String name;
-    private double latitude;
-    private double longitude;
     private LocationManager locationManager;
     private LocationListener listener;
-
-    private TextView lot;
-    private TextView longs;
-
-    private Button b;
-
     private Intent intent;
     private String result;
     private TextView city;
@@ -62,12 +54,8 @@ public class SecondActivity extends AppCompatActivity {
         imageView.setImageResource(getIntent().getIntExtra(ICO_KEY, 1));
 
         intent = getIntent();
-        lot = findViewById(R.id.latitude);
-        longs = findViewById(R.id.longitude);
-
         name = intent.getStringExtra("sname");
         city = findViewById(R.id.city);
-        b = findViewById(R.id.button);
         names = findViewById(R.id.name);
         names.setText("Приветствую " + name + "!");
 
@@ -76,10 +64,6 @@ public class SecondActivity extends AppCompatActivity {
         listener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                longitude = location.getLongitude();
-                latitude = location.getLatitude();
-                longs.setText(String.valueOf(longitude));
-                lot.setText(String.valueOf(latitude));
                 Geocoder gcd = new Geocoder(SecondActivity.this, Locale.getDefault());
                 List<Address> list = null;
                 try {
@@ -101,7 +85,7 @@ public class SecondActivity extends AppCompatActivity {
                             public void onResponse(Call<City> call, Response<City> response) {
                                 if (response.isSuccessful()) {
                                     City city = response.body();
-                                    showAge(city);
+                                    showTemp(city);
                                 } else {
 
                                 }
@@ -157,22 +141,23 @@ public class SecondActivity extends AppCompatActivity {
             }
             return;
         }
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (ActivityCompat.checkSelfPermission(SecondActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(SecondActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
-                    return;
-                }
-                locationManager.requestLocationUpdates("gps", 5000, 0, listener);
-            }
-        });
+        locationManager.requestLocationUpdates("gps", 5000, 0, listener);
+//        b.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (ActivityCompat.checkSelfPermission(SecondActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(SecondActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//                    // TODO: Consider calling
+//                    //    ActivityCompat#requestPermissions
+//                    // here to request the missing permissions, and then overriding
+//                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+//                    //                                          int[] grantResults)
+//                    // to handle the case where the user grants the permission. See the documentation
+//                    // for ActivityCompat#requestPermissions for more details.
+//                    return;
+//                }
+//                locationManager.requestLocationUpdates("gps", 5000, 0, listener);
+//            }
+//        });
     }
 
     @Override
@@ -180,10 +165,10 @@ public class SecondActivity extends AppCompatActivity {
 
     }
 
-    private void showAge(City city){
-        double age = city.getMain().getTemp();
-        String ageist = String.valueOf(age);
-        ((TextView)findViewById(R.id.temp)).setText(ageist);
+    private void showTemp(City city){
+        double temp_v = city.getMain().getTemp();
+        String tempist = String.valueOf(temp_v);
+        ((TextView)findViewById(R.id.temp)).setText(tempist);
     }
 
 }
