@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="@string/zap"
+        android:id="@+id/zp" />
+    <item
+        android:title="@string/openMaps"
+        android:id="@+id/openMap"
+        />
+    <item
+        android:title="@string/Set"
+        android:id ="@+id/settings"
+        />
+</menu>

@@ -1,6 +1,7 @@
 package com.example.sacwp;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -16,10 +17,14 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.example.sacwp.api.NetworkService;
 import com.example.sacwp.data.City;
@@ -44,6 +49,17 @@ public class SecondActivity extends AppCompatActivity {
     private String result;
     private TextView city;
     public TextView names;
+    public int i_exit = 1;
+    public TextView logicResult;
+
+    public String str_1 = "Хорошее время помыть машину!";
+    public String str_2 = "Только при большой потребности!";
+    public String str_3 = "Сейчас нельзя мыть машину !";
+    public String str_e = "Error";
+
+    String desc = "Clear";
+    double temp_v = 0;
+    private Intent intent_p;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,6 +74,7 @@ public class SecondActivity extends AppCompatActivity {
         city = findViewById(R.id.city);
         names = findViewById(R.id.name);
         names.setText("Приветствую " + name + "!");
+        logicResult = findViewById(R.id.logicResult);
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
@@ -86,6 +103,7 @@ public class SecondActivity extends AppCompatActivity {
                                 if (response.isSuccessful()) {
                                     City city = response.body();
                                     showTemp(city);
+                                    showDescription(city);
                                 } else {
 
                                 }
@@ -97,6 +115,20 @@ public class SecondActivity extends AppCompatActivity {
                             }
 
                         });
+                switch (desc) {
+                    case "Clear":
+                        logicClear(temp_v, logicResult);
+                        break;
+                    case "Clouds":
+                        logicClouds(temp_v,logicResult);
+                        break;
+                    case "Rain":
+                        logicRain(temp_v,logicResult);
+                        break;
+                    case "Snow":
+                        logicSnow(temp_v,logicResult);
+                        break;
+                }
             }
 
             @Override
@@ -162,13 +194,75 @@ public class SecondActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        if(i_exit == 1){
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "Нажмите ещё раз для выхода!", Toast.LENGTH_SHORT);
+            toast.show();
+            i_exit = 2;
+        }else if(i_exit ==2) {
+            i_exit =1;
 
+        }
     }
 
     private void showTemp(City city){
-        double temp_v = city.getMain().getTemp();
+        temp_v = city.getMain().getTemp();
         String tempist = String.valueOf(temp_v);
         ((TextView)findViewById(R.id.temp)).setText(tempist);
+    }
+
+    private void showDescription(City city){
+        desc = city.getWeather().getMain();
+    }
+
+    public void logicClear(double temp,TextView textView){
+        if(temp>= 10){
+            textView.setText(str_1);
+        }else if(temp<10 && temp >=-5){
+            textView.setText(str_2);
+        }else if(temp<=-5){
+            textView.setText(str_3);
+        }else{
+            textView.setText(str_e);
+        }
+    }
+
+    public void logicClouds(double temp,TextView textView){
+
+    }
+
+    public void logicRain(double temp,TextView textView){
+
+    }
+
+    public void logicSnow(double temp,TextView textView){
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+        switch (id){
+            case R.id.settings:
+                intent_p = new Intent(SecondActivity.this, Settings_to.class);
+                startActivity(intent_p);
+                break;
+            case R.id.zp:
+                intent_p = new Intent(SecondActivity.this, Driveacar.class);
+                startActivity(intent_p);
+                break;
+            case R.id.openMap:
+                intent_p = new Intent(SecondActivity.this, OpenMap.class);
+                startActivity(intent_p);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

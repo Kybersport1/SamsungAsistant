@@ -19,4 +19,9 @@
     <string name="weather_drizzle">&#xf01c;</string>
 
     <string name="place_not_found">Sorry, no weather data found.</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="zap">Запланировать поездку</string>
+    <string name="openMaps">Показать карту</string>
+    <string name="Set">Открыть настройки</string>
+    <string name="title_activity_settings_to">Settings_to</string>
 </resources>
