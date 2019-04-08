@@ -1,7 +1,6 @@
 package com.example.sacwp;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -16,15 +15,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.example.sacwp.api.NetworkService;
 import com.example.sacwp.data.City;
@@ -61,6 +56,9 @@ public class SecondActivity extends AppCompatActivity {
     double temp_v = 0;
     private Intent intent_p;
 
+    //openMap intent
+    public Intent intent_r;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +92,7 @@ public class SecondActivity extends AppCompatActivity {
                     result = address.getLocality();
                     city.setText(result);
                 }
+
                 NetworkService.getInstance()
                         .getCityApi()
                         .getCity(result,APPID,UNITS)
@@ -103,7 +102,6 @@ public class SecondActivity extends AppCompatActivity {
                                 if (response.isSuccessful()) {
                                     City city = response.body();
                                     showTemp(city);
-                                    showDescription(city);
                                 } else {
 
                                 }
@@ -115,6 +113,7 @@ public class SecondActivity extends AppCompatActivity {
                             }
 
                         });
+
                 switch (desc) {
                     case "Clear":
                         logicClear(temp_v, logicResult);
@@ -143,7 +142,6 @@ public class SecondActivity extends AppCompatActivity {
 
             @Override
             public void onProviderDisabled(String s) {
-
                 Intent i = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                 startActivity(i);
             }
@@ -208,7 +206,7 @@ public class SecondActivity extends AppCompatActivity {
     private void showTemp(City city){
         temp_v = city.getMain().getTemp();
         String tempist = String.valueOf(temp_v);
-        ((TextView)findViewById(R.id.temp)).setText(tempist);
+        ((TextView)findViewById(R.id.temp_y)).setText(tempist);
     }
 
     private void showDescription(City city){
@@ -259,6 +257,7 @@ public class SecondActivity extends AppCompatActivity {
                 break;
             case R.id.openMap:
                 intent_p = new Intent(SecondActivity.this, OpenMap.class);
+                intent_p.putExtra("result", result);
                 startActivity(intent_p);
                 break;
         }
