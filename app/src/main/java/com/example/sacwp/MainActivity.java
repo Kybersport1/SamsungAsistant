@@ -1,6 +1,8 @@
 package com.example.sacwp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +18,13 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
+
+    private SharedPreferences sharedPreferences;
+    private final String APP_PREFERENCES = "Shared_preferences_app";
+    private final String NAME_KEY = "Name_key";
+    private final String TYPE_KEY = "Type_key";
+    private final String MARK_KEY = "Mark_key";
+
     private RadioButton sedan;
     private RadioButton vnedoro;
     private RadioButton gryz;
@@ -27,6 +36,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sharedPreferences = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+
+        if(sharedPreferences.getString(NAME_KEY, "") != "" && sharedPreferences.getInt(TYPE_KEY, -1) != -1 && sharedPreferences.getInt(MARK_KEY, -1) != -1){
+            Intent intent = new Intent(this, SecondActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
+
         sedan = findViewById(R.id.radioButtonSedan);
         vnedoro = findViewById(R.id.radioButtonVnedoro);
         gryz = findViewById(R.id.radioButtonGryz);
@@ -73,7 +91,13 @@ public class MainActivity extends AppCompatActivity {
                     toast.show();
                 }else{
                     Intent intent = new Intent(MainActivity.this, ListCar.class);
-                    intent.putExtra("fname", editText.getText().toString());
+
+                    //intent.putExtra("fname", editText.getText().toString());
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString(NAME_KEY, editText.getText().toString());
+                    editor.putInt(TYPE_KEY, typeOfCar);
+                    editor.apply();
+
                     startActivity(intent);
                 }
             }

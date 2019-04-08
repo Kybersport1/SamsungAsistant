@@ -3,6 +3,7 @@ package com.example.sacwp;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -38,14 +39,20 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SecondActivity extends AppCompatActivity {
-    ImageView imageView;
-    public static final String ICO_KEY = "Ico key ";
+    //public static final String ICO_KEY = "Ico key ";
+
+    private SharedPreferences sharedPreferences;
+    private final String APP_PREFERENCES = "Shared_preferences_app";
+    private final String NAME_KEY = "Name_key";
+    private final String TYPE_KEY = "Type_key";
+    private final String MARK_KEY = "Mark_key";
+
+    private ImageView imageView;
     public final String APPID = "693bc5884d2a585cdb170d137f0da55a";
     public final String UNITS = "metric";
     public String name;
     private LocationManager locationManager;
     private LocationListener listener;
-    private Intent intent;
     private String result;
     private TextView city;
     public TextView names;
@@ -57,7 +64,7 @@ public class SecondActivity extends AppCompatActivity {
     public String str_3 = "Сейчас нельзя мыть машину !";
     public String str_e = "Error";
 
-    String desc = "Clear";
+    private String desc = "Clear";
     double temp_v = 0;
     private Intent intent_p;
 
@@ -66,11 +73,15 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        imageView = findViewById(R.id.image);
-        imageView.setImageResource(getIntent().getIntExtra(ICO_KEY, 1));
+        sharedPreferences = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
 
-        intent = getIntent();
-        name = intent.getStringExtra("sname");
+
+        imageView = findViewById(R.id.image);
+        //imageView.setImageResource(getIntent().getIntExtra(ICO_KEY, 1));
+        imageView.setImageResource(sharedPreferences.getInt(MARK_KEY, -1));
+
+        //name = getIntent().getStringExtra("sname");
+        name = sharedPreferences.getString(NAME_KEY, "Anonym");
         city = findViewById(R.id.city);
         names = findViewById(R.id.name);
         names.setText("Приветствую " + name + "!");

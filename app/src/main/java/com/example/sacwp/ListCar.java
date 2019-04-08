@@ -1,6 +1,8 @@
 package com.example.sacwp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,7 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListCar extends AppCompatActivity implements RecyclerAdapter.ItemClicked {
-    public static final String ICO_KEY = "Ico key ";
+    //public static final String ICO_KEY = "Ico key ";
+
+    private SharedPreferences sharedPreferences;
+    private final String APP_PREFERENCES = "Shared_preferences_app";
+    private final String NAME_KEY = "Name_key";
+    private final String TYPE_KEY = "Type_key";
+    private final String MARK_KEY = "Mark_key";
 
     RecyclerAdapter adapter;
     RecyclerView recyclerView;
@@ -20,6 +28,7 @@ public class ListCar extends AppCompatActivity implements RecyclerAdapter.ItemCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_car);
+        sharedPreferences = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
 
 
         list = generateList();
@@ -115,8 +124,11 @@ public class ListCar extends AppCompatActivity implements RecyclerAdapter.ItemCl
     @Override
     public void itemClickedCallback(int itemPosition) {
         Intent intent = new Intent(this, SecondActivity.class);
-        intent.putExtra(ICO_KEY, list.get(itemPosition).getIco());
-        intent.putExtra("sname" , getIntent().getStringExtra("fname"));
+        //intent.putExtra(ICO_KEY, list.get(itemPosition).getIco());
+        //intent.putExtra("sname" , getIntent().getStringExtra("fname"));
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(MARK_KEY, list.get(itemPosition).getIco());
+        editor.apply();
         startActivity(intent);
     }
 }
