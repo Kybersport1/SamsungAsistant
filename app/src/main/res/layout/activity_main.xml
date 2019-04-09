@@ -61,7 +61,7 @@
     <EditText
         android:id="@+id/editName"
         style="@android:style/Widget.Holo.Light.EditText"
-        android:layout_width="174dp"
+        android:layout_width="149dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"

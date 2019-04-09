@@ -1,6 +1,7 @@
 package com.example.sacwp;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -16,6 +17,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -35,6 +37,7 @@ import retrofit2.Response;
 
 public class SecondActivity extends AppCompatActivity {
     //public static final String ICO_KEY = "Ico key ";
+    private final static String TAG = SecondActivity.class.getSimpleName();
 
     private SharedPreferences sharedPreferences;
     private final String APP_PREFERENCES = "Shared_preferences_app";
@@ -103,7 +106,6 @@ public class SecondActivity extends AppCompatActivity {
                     result = address.getLocality();
                     city.setText(result);
                 }
-
                 NetworkService.getInstance()
                         .getCityApi()
                         .getCity(result,APPID,UNITS)
@@ -113,6 +115,20 @@ public class SecondActivity extends AppCompatActivity {
                                 if (response.isSuccessful()) {
                                     City city = response.body();
                                     showTemp(city);
+                                    switch (desc) {
+                                        case "Clear":
+                                            logicClear(temp_v, logicResult);
+                                            break;
+                                        case "Clouds":
+                                            logicClouds(temp_v,logicResult);
+                                            break;
+                                        case "Rain":
+                                            logicRain(temp_v,logicResult);
+                                            break;
+                                        case "Snow":
+                                            logicSnow(temp_v,logicResult);
+                                            break;
+                                    }
                                 } else {
 
                                 }
@@ -120,25 +136,11 @@ public class SecondActivity extends AppCompatActivity {
 
                             @Override
                             public void onFailure(Call<City> call, Throwable t) {
-
+                                ((TextView)findViewById(R.id.temp_y)).setText("Query error");
+                                Log.d(TAG, t.getMessage());
                             }
 
                         });
-
-                switch (desc) {
-                    case "Clear":
-                        logicClear(temp_v, logicResult);
-                        break;
-                    case "Clouds":
-                        logicClouds(temp_v,logicResult);
-                        break;
-                    case "Rain":
-                        logicRain(temp_v,logicResult);
-                        break;
-                    case "Snow":
-                        logicSnow(temp_v,logicResult);
-                        break;
-                }
             }
 
             @Override
@@ -215,13 +217,10 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     private void showTemp(City city){
-        temp_v = city.getMain().getTemp();
-        String tempist = String.valueOf(temp_v);
+        double temp = city.getMain().getTemp();
+        temp_v = temp;
+        String tempist = String.valueOf(temp);
         ((TextView)findViewById(R.id.temp_y)).setText(tempist);
-    }
-
-    private void showDescription(City city){
-        desc = city.getWeather().getMain();
     }
 
     public void logicClear(double temp,TextView textView){

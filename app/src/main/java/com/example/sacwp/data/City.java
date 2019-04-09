@@ -8,18 +8,6 @@ public class City {
     @Expose
     private Main main;
 
-    @SerializedName("weather")
-    @Expose
-    private Weather weather;
-
-    public Weather getWeather() {
-        return weather;
-    }
-
-    public void setWeather(Weather weather) {
-        this.weather = weather;
-    }
-
     public Main getMain() {
         return main;
     }
