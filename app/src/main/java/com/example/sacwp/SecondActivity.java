@@ -212,7 +212,8 @@ public class SecondActivity extends AppCompatActivity {
             i_exit = 2;
         }else if(i_exit ==2) {
             i_exit =1;
-
+            System.exit(0);
+            finish();
         }
     }
 
