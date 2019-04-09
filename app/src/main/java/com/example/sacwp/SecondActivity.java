@@ -14,6 +14,7 @@ import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -69,6 +71,9 @@ public class SecondActivity extends AppCompatActivity {
     //openMap intent
     public Intent intent_r;
 
+
+    ConstraintLayout view;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +92,8 @@ public class SecondActivity extends AppCompatActivity {
         names = findViewById(R.id.name);
         names.setText("Приветствую " + name + "!");
         logicResult = findViewById(R.id.logicResult);
+
+        view = (ConstraintLayout) findViewById(R.id.container_layout);
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
@@ -118,15 +125,22 @@ public class SecondActivity extends AppCompatActivity {
                                     switch (desc) {
                                         case "Clear":
                                             logicClear(temp_v, logicResult);
+                                            view.setBackgroundResource(R.drawable.clear);
                                             break;
                                         case "Clouds":
+                                            view.setBackgroundResource(R.drawable.clouds);
                                             logicClouds(temp_v,logicResult);
                                             break;
                                         case "Rain":
+                                            view.setBackgroundResource(R.drawable.rain);
                                             logicRain(temp_v,logicResult);
                                             break;
                                         case "Snow":
+                                            view.setBackgroundResource(R.drawable.snow);
                                             logicSnow(temp_v,logicResult);
+                                            break;
+                                        default:
+                                            logicError(logicResult);
                                             break;
                                     }
                                 } else {
@@ -237,15 +251,43 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     public void logicClouds(double temp,TextView textView){
-
+        if(temp>= 9){
+            textView.setText(str_1);
+        }else if(temp<9 && temp >=-6){
+            textView.setText(str_2);
+        }else if(temp<=-6){
+            textView.setText(str_3);
+        }else{
+            textView.setText(str_e);
+        }
     }
 
     public void logicRain(double temp,TextView textView){
-
+        if(temp>= 20){
+            textView.setText(str_1);
+        }else if(temp<20 && temp >=10){
+            textView.setText(str_2);
+        }else if(temp<=10){
+            textView.setText(str_3);
+        }else{
+            textView.setText(str_e);
+        }
     }
 
     public void logicSnow(double temp,TextView textView){
+        if(temp>=10){
+            textView.setText(str_1);
+        }else if(temp<10 && temp >=-5){
+            textView.setText(str_2);
+        }else if(temp<=-5){
+            textView.setText(str_3);
+        }else{
+            textView.setText(str_e);
+        }
+    }
 
+    public void logicError(TextView textView){
+        textView.setText(str_e);
     }
 
     @Override

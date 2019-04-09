@@ -50,6 +50,10 @@ public class OpenMap extends AppCompatActivity {
             ((TextView)findViewById(R.id.city_name)).setText(citys);
             int imgresourse = getResources().getIdentifier("@drawable/uman",null , this.getPackageName());
             imageView.setImageResource(imgresourse);
+        }else{
+            ((TextView)findViewById(R.id.city_name)).setText(citys);
+            int imgresourse = getResources().getIdentifier("@drawable/vinnitsa",null , this.getPackageName());
+            imageView.setImageResource(imgresourse);
         }
     }
 
