@@ -24,4 +24,15 @@
     <string name="openMaps">Показать карту</string>
     <string name="Set">Открыть настройки</string>
     <string name="title_activity_settings_to">Settings_to</string>
+
+    <!--<string-array name="city">-->
+        <!--<item>Вінниця</item>-->
+        <!--<item>Херсон</item>-->
+        <!--<item>Миколаїв</item>-->
+        <!--<item>Київ</item>-->
+        <!--<item>Умань</item>-->
+        <!--<item>Житомир</item>-->
+        <!--<item>Львів</item>-->
+    <!--</string-array>-->
+
 </resources>

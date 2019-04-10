@@ -3,6 +3,7 @@ package com.example.sacwp;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,13 +28,15 @@ public class Settings_to extends AppCompatActivity {
     int typeOfCar;
     private Button button;
     private EditText editText;
+    private ConstraintLayout view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_to);
         sharedPreferences = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-
+        view = findViewById(R.id.settings_cons);
+        view.setBackgroundResource(R.drawable.settings);
         sedan = findViewById(R.id.radioButtonSedan);
         vnedoro = findViewById(R.id.radioButtonVnedoro);
         gryz = findViewById(R.id.radioButtonGryz);

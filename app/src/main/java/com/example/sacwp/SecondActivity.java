@@ -23,6 +23,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -67,7 +68,6 @@ public class SecondActivity extends AppCompatActivity {
     private String desc = "Clear";
     double temp_v = 0;
     private Intent intent_p;
-
     //openMap intent
     public Intent intent_r;
 
@@ -94,6 +94,7 @@ public class SecondActivity extends AppCompatActivity {
         logicResult = findViewById(R.id.logicResult);
 
         view = (ConstraintLayout) findViewById(R.id.container_layout);
+        view.setBackgroundResource(R.drawable.defaultt);
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 

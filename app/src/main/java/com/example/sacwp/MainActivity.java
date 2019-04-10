@@ -3,6 +3,7 @@ package com.example.sacwp;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private final String NAME_KEY = "Name_key";
     private final String TYPE_KEY = "Type_key";
     private final String MARK_KEY = "Mark_key";
-
+    private ConstraintLayout view;
     private RadioButton sedan;
     private RadioButton vnedoro;
     private RadioButton gryz;
@@ -37,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         sharedPreferences = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        view = findViewById(R.id.mainact_cons);
+        view.setBackgroundResource(R.drawable.maina);
 
         if(sharedPreferences.getString(NAME_KEY, "") != "" && sharedPreferences.getInt(TYPE_KEY, -1) != -1 && sharedPreferences.getInt(MARK_KEY, -1) != -1){
             Intent intent = new Intent(this, SecondActivity.class);
