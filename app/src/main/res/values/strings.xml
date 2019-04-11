@@ -4,7 +4,6 @@
     <string name="acura">Acura</string>
     <string name="alfa_romeo">Alfa romeo</string>
     <string name="change_city">Change city</string>
-
     <!-- Put your own APP ID here -->
     <string name="open_weather_maps_app_id">11111</string>
 
@@ -34,5 +33,6 @@
         <!--<item>Житомир</item>-->
         <!--<item>Львів</item>-->
     <!--</string-array>-->
+
 
 </resources>
