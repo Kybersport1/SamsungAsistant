@@ -71,6 +71,9 @@ public class SecondActivity extends AppCompatActivity {
     //openMap intent
     public Intent intent_r;
 
+    public double longitude;
+    public double latitude;
+
 
     ConstraintLayout view;
 
@@ -112,6 +115,8 @@ public class SecondActivity extends AppCompatActivity {
                 if (list != null & list.size() > 0) {
                     Address address = list.get(0);
                     result = address.getLocality();
+                    longitude = location.getLongitude();
+                    latitude = location.getLatitude();
                     city.setText(result);
                 }
                 NetworkService.getInstance()
@@ -310,8 +315,10 @@ public class SecondActivity extends AppCompatActivity {
                 startActivity(intent_p);
                 break;
             case R.id.openMap:
-                intent_p = new Intent(SecondActivity.this, OpenMap.class);
+                intent_p = new Intent(SecondActivity.this, MapsActivity.class);
                 intent_p.putExtra("result", result);
+                intent_p.putExtra("long",longitude);
+                intent_p.putExtra("latit",latitude);
                 startActivity(intent_p);
                 break;
         }
