@@ -74,6 +74,8 @@ public class SecondActivity extends AppCompatActivity {
     public double longitude;
     public double latitude;
 
+    private ImageView img_description;
+
 
     ConstraintLayout view;
 
@@ -100,6 +102,8 @@ public class SecondActivity extends AppCompatActivity {
         view.setBackgroundResource(R.drawable.defaultt);
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+        img_description = (ImageView) findViewById(R.id.img_description);
 
         listener = new LocationListener() {
             @Override
@@ -131,18 +135,22 @@ public class SecondActivity extends AppCompatActivity {
                                     switch (desc) {
                                         case "Clear":
                                             logicClear(temp_v, logicResult);
+                                            img_description.setImageResource(R.drawable.suns);
                                             view.setBackgroundResource(R.drawable.clear);
                                             break;
                                         case "Clouds":
                                             view.setBackgroundResource(R.drawable.clouds);
+                                            img_description.setImageResource(R.drawable.cloud);
                                             logicClouds(temp_v,logicResult);
                                             break;
                                         case "Rain":
                                             view.setBackgroundResource(R.drawable.rain);
+                                            img_description.setImageResource(R.drawable.sun_rain);
                                             logicRain(temp_v,logicResult);
                                             break;
                                         case "Snow":
                                             view.setBackgroundResource(R.drawable.snow);
+                                            img_description.setImageResource(R.drawable.snoww);
                                             logicSnow(temp_v,logicResult);
                                             break;
                                         default:
