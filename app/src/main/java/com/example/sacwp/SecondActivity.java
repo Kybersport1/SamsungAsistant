@@ -10,6 +10,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
@@ -135,22 +136,18 @@ public class SecondActivity extends AppCompatActivity {
                                     switch (desc) {
                                         case "Clear":
                                             logicClear(temp_v, logicResult);
-                                            img_description.setImageResource(R.drawable.suns);
-                                            view.setBackgroundResource(R.drawable.clear);
+                                            img_description.setImageResource(R.drawable.ic_suns);
                                             break;
                                         case "Clouds":
-                                            view.setBackgroundResource(R.drawable.clouds);
-                                            img_description.setImageResource(R.drawable.cloud);
+                                            img_description.setImageResource(R.drawable.ic_cloud);
                                             logicClouds(temp_v,logicResult);
                                             break;
                                         case "Rain":
-                                            view.setBackgroundResource(R.drawable.rain);
-                                            img_description.setImageResource(R.drawable.sun_rain);
+                                            img_description.setImageResource(R.drawable.ic_rain);
                                             logicRain(temp_v,logicResult);
                                             break;
                                         case "Snow":
-                                            view.setBackgroundResource(R.drawable.snow);
-                                            img_description.setImageResource(R.drawable.snoww);
+                                            img_description.setImageResource(R.drawable.ic_snow);
                                             logicSnow(temp_v,logicResult);
                                             break;
                                         default:
@@ -323,11 +320,13 @@ public class SecondActivity extends AppCompatActivity {
                 startActivity(intent_p);
                 break;
             case R.id.openMap:
-                intent_p = new Intent(SecondActivity.this, MapsActivity.class);
-                intent_p.putExtra("result", result);
-                intent_p.putExtra("long",longitude);
-                intent_p.putExtra("latit",latitude);
-                startActivity(intent_p);
+//                intent_p = new Intent(SecondActivity.this, MapsActivity.class);
+//                intent_p.putExtra("result", result);
+//                intent_p.putExtra("long",longitude);
+//                intent_p.putExtra("latit",latitude);
+//                startActivity(intent_p);
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/search/Мойки+" + result));
+                startActivity(intent);
                 break;
         }
         return super.onOptionsItemSelected(item);
