@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:padding="16dp"
+    android:id="@+id/design_bottom_sheet_linear">
+
+
+    <TextView
+        android:id="@+id/vlaga"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Влажность :"
+        android:textColor="@color/colorBlack" />
+
+    <TextView
+        android:id="@+id/windSpeed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Скорость ветра :"
+        android:textColor="@color/colorBlack" />
+
+    <TextView
+        android:id="@+id/maxTemp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Максимальная температура :"
+        android:textColor="@color/colorBlack" />
+
+    <TextView
+        android:id="@+id/minTemp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Минимальная температура :"
+        android:textColor="@color/colorBlack" />
+</LinearLayout>

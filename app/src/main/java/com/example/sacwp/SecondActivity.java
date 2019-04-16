@@ -22,6 +22,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -77,6 +79,9 @@ public class SecondActivity extends AppCompatActivity {
 
     private ImageView img_description;
 
+    private Button button_sheet;
+    //
+
 
     ConstraintLayout view;
 
@@ -87,17 +92,17 @@ public class SecondActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
 
-
         imageView = findViewById(R.id.image);
         //imageView.setImageResource(getIntent().getIntExtra(ICO_KEY, 1));
         imageView.setImageResource(sharedPreferences.getInt(MARK_KEY, -1));
-
         //name = getIntent().getStringExtra("sname");
         name = sharedPreferences.getString(NAME_KEY, "Anonym");
         city = findViewById(R.id.city);
         names = findViewById(R.id.name);
         names.setText("Приветствую " + name + "!");
         logicResult = findViewById(R.id.logicResult);
+
+        button_sheet = findViewById(R.id.buttonSheet);
 
         view = (ConstraintLayout) findViewById(R.id.container_layout);
         view.setBackgroundResource(R.drawable.defaultt);
@@ -186,6 +191,14 @@ public class SecondActivity extends AppCompatActivity {
         };
 
         configure_button();
+
+        button_sheet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bottom_sheet bottom_sheet = new Bottom_sheet();
+                bottom_sheet.show(getSupportFragmentManager(),"Info");
+            }
+        });
 
     }
 
