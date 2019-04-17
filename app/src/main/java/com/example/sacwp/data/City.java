@@ -8,6 +8,17 @@ public class City {
     @Expose
     private Main main;
 
+    @SerializedName("wind")
+    private Wind wind;
+
+    public Wind getWind() {
+        return wind;
+    }
+
+    public void setWind(Wind wind) {
+        this.wind = wind;
+    }
+
     public Main getMain() {
         return main;
     }

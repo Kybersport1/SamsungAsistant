@@ -36,7 +36,7 @@ public class Settings_to extends AppCompatActivity {
         setContentView(R.layout.activity_settings_to);
         sharedPreferences = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         view = findViewById(R.id.settings_cons);
-        view.setBackgroundResource(R.drawable.settings);
+        view.setBackgroundResource(R.drawable.defaultt);
         sedan = findViewById(R.id.radioButtonSedan);
         vnedoro = findViewById(R.id.radioButtonVnedoro);
         gryz = findViewById(R.id.radioButtonGryz);
