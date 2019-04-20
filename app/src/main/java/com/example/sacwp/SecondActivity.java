@@ -32,6 +32,7 @@ import android.widget.Toast;
 
 import com.example.sacwp.api.NetworkService;
 import com.example.sacwp.data.City;
+import com.example.sacwp.data.Weather;
 
 import java.io.IOException;
 import java.util.List;
@@ -68,8 +69,8 @@ public class SecondActivity extends AppCompatActivity {
     public String str_3 = "Сейчас нельзя мыть машину !";
     public String str_e = "Error";
 
-    private String desc = "Clear";
-    double temp_v = 0;
+    private String desc = "Clouds";
+    int temp_v = 0;
     private Intent intent_p;
     //openMap intent
     public Intent intent_r;
@@ -80,6 +81,8 @@ public class SecondActivity extends AppCompatActivity {
     private ImageView img_description;
 
     private Button button_sheet;
+
+    private static long back_pressed;
     //
 
 
@@ -99,7 +102,7 @@ public class SecondActivity extends AppCompatActivity {
         name = sharedPreferences.getString(NAME_KEY, "Anonym");
         city = findViewById(R.id.city);
         names = findViewById(R.id.name);
-        names.setText("Приветствую " + name + "!");
+        names.setText("Приветствую, " + name + "!");
         logicResult = findViewById(R.id.logicResult);
 
         button_sheet = findViewById(R.id.buttonSheet);
@@ -138,6 +141,7 @@ public class SecondActivity extends AppCompatActivity {
                                 if (response.isSuccessful()) {
                                     City city = response.body();
                                     showTemp(city);
+                                    showMain(city);
                                     switch (desc) {
                                         case "Clear":
                                             logicClear(temp_v, logicResult);
@@ -243,23 +247,26 @@ public class SecondActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(i_exit == 1){
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "Нажмите ещё раз для выхода!", Toast.LENGTH_SHORT);
-            toast.show();
-            i_exit = 2;
-        }else if(i_exit ==2) {
-            i_exit =1;
-            System.exit(0);
-            finish();
+        if (back_pressed + 2000 > System.currentTimeMillis()) {
+            super.onBackPressed();
+        } else {
+            Toast.makeText(getBaseContext(), "Нажмите еще раз для выхода", Toast.LENGTH_SHORT).show();
         }
+
+        back_pressed = System.currentTimeMillis();
     }
 
     private void showTemp(City city){
         double temp = city.getMain().getTemp();
-        temp_v = temp;
-        String tempist = String.valueOf(temp);
+        int value = (int) temp;
+        temp_v = value;
+        String tempist = String.valueOf(value) + "°С";
         ((TextView)findViewById(R.id.temp_y)).setText(tempist);
+    }
+
+    private void showMain(City city){
+        String mains = (city.getWeather() !=null) ? city.getWeather().get(0).getMain() : "null";
+        desc = mains;
     }
 
     public void logicClear(double temp,TextView textView){
@@ -328,18 +335,13 @@ public class SecondActivity extends AppCompatActivity {
                 intent_p = new Intent(SecondActivity.this, Settings_to.class);
                 startActivity(intent_p);
                 break;
-            case R.id.zp:
-                intent_p = new Intent(SecondActivity.this, Driveacar.class);
-                startActivity(intent_p);
-                break;
             case R.id.openMap:
-//                intent_p = new Intent(SecondActivity.this, MapsActivity.class);
-//                intent_p.putExtra("result", result);
-//                intent_p.putExtra("long",longitude);
-//                intent_p.putExtra("latit",latitude);
-//                startActivity(intent_p);
                 Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/search/Мойки+" + result));
                 startActivity(intent);
+                break;
+            case R.id.regulations:
+                intent_p = new Intent(SecondActivity.this, Regulations.class);
+                startActivity(intent_p);
                 break;
         }
         return super.onOptionsItemSelected(item);

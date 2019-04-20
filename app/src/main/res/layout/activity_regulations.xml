@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Regulations">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="378dp"
+        tools:layout_editor_absoluteY="443dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="207dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.615"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.015"
+                app:srcCompat="@drawable/avtomojkayuzao" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:text="Тут 8 простых правил которые помогут вам сберечь покрытие машины на долгие годы.                                      "
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:text="1.Исключайте мойку автомобиля под прямым солнечным светом и сразу после его остановки, это позволит избежать резких температурных перепадов, которые негативно влияют на лакокрасочное покрытие." />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:text="2. Мойте автомобиль сразу же после его загрязнения, в противном случае, грязь будет накладывается слоями, что впоследствии затруднит процесс мойки." />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:text="3. Не рекомендуется мыть машину шампунем чаще, чем 2-3 раза в месяц. Частое воздействие активных веществ на лакокрасочное покрытие приводит к быстрой потере первоначального вида." />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:text="4. Прежде всего, стоит помнить, что кузов автомобиля необходимо мыть ни в коем случае не ледяной водой, для мойки используйте только теплую воду с добавлением качественных автомобильных шампуней." />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:text="5. Во время мойки автомобиля используйте только щетку с мягким ворсом, при этом не рекомендуется мыть кузов с помощью тряпки или мочалки, так как они удерживают песчинки, которые оставляют мелкие царапины на лакокрасочном покрытии, что впоследствии приводит к тому, что краска становится матовая." />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:text="6. Засохшую грязь на кузове автомобиля предварительно необходимо смочить водой и только потом приступать к мойке." />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:text="7. Раствор для мытья (вода + шампунь) автомобильного кузова необходимо наносить сверху вниз, начиная с крыши и заканчивая порогами, при этом периодически полоскать щетку в большом количестве воды, чтобы освободить ворсу от грязи." />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:text="8. После окончания мойки тщательно протрите кузов сухой тряпкой, чтобы на нем не было следов влаги. Остатки воды при высыхании образуют белые прозрачные пятна. Для высушивания автомобиля после мойки хорошо подходит специальная влагопоглощающая салфетка" />
+        </LinearLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

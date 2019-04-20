@@ -3,6 +3,8 @@ package com.example.sacwp.data;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class City {
     @SerializedName("main")
     @Expose
@@ -10,6 +12,17 @@ public class City {
 
     @SerializedName("wind")
     private Wind wind;
+
+    @SerializedName("weather")
+    private List<Weather> weather;
+
+    public List<Weather> getWeather() {
+        return weather;
+    }
+
+    public void setWeather(List<Weather> weather) {
+        this.weather = weather;
+    }
 
     public Wind getWind() {
         return wind;
