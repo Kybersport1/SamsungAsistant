@@ -85,6 +85,9 @@ public class SecondActivity extends AppCompatActivity {
     private static long back_pressed;
     //
 
+    public int tomorrow_temperature = 0;
+    public String tomorrow_description = "Clear";
+
 
     ConstraintLayout view;
 
@@ -270,8 +273,10 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     public void logicClear(double temp,TextView textView){
-        if(temp>= 10){
+        if(temp>= 10 && tomorrow_temperature>=10){
             textView.setText(str_1);
+        }else if(temp>=10 && tomorrow_temperature<=10) {
+            textView.setText(str_2);
         }else if(temp<10 && temp >=-5){
             textView.setText(str_2);
         }else if(temp<=-5){
@@ -282,8 +287,10 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     public void logicClouds(double temp,TextView textView){
-        if(temp>= 9){
+        if(temp>= 9 && tomorrow_temperature>=9){
             textView.setText(str_1);
+        }else if(temp>=9 && tomorrow_temperature<=9) {
+            textView.setText(str_2);
         }else if(temp<9 && temp >=-6){
             textView.setText(str_2);
         }else if(temp<=-6){
@@ -294,8 +301,10 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     public void logicRain(double temp,TextView textView){
-        if(temp>= 20){
+        if(temp>= 20 && tomorrow_temperature >=20){
             textView.setText(str_1);
+        }else if(temp>=20 && tomorrow_temperature<=20) {
+            textView.setText(str_2);
         }else if(temp<20 && temp >=10){
             textView.setText(str_2);
         }else if(temp<=10){
@@ -306,8 +315,10 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     public void logicSnow(double temp,TextView textView){
-        if(temp>=10){
+        if(temp>=10 && tomorrow_temperature>= 10){
             textView.setText(str_1);
+        }else if(temp>=10 && tomorrow_temperature<=10) {
+            textView.setText(str_2);
         }else if(temp<10 && temp >=-5){
             textView.setText(str_2);
         }else if(temp<=-5){
