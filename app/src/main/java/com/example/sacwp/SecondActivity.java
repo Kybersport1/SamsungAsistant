@@ -31,8 +31,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sacwp.api.NetworkService;
+import com.example.sacwp.api_daily.NetworkServiceDaily;
 import com.example.sacwp.data.City;
 import com.example.sacwp.data.Weather;
+import com.example.sacwp.data_daily.Daily;
 
 import java.io.IOException;
 import java.util.List;
@@ -55,6 +57,8 @@ public class SecondActivity extends AppCompatActivity {
     private ImageView imageView;
     public final String APPID = "693bc5884d2a585cdb170d137f0da55a";
     public final String UNITS = "metric";
+    public final String APPIDTOMMOROW ="693bc5884d2a585cdb170d137f0da55a";
+    public final String UNITSTOMMOROW = "metric7cnt=8";
     public String name;
     private LocationManager locationManager;
     private LocationListener listener;
@@ -145,27 +149,6 @@ public class SecondActivity extends AppCompatActivity {
                                     City city = response.body();
                                     showTemp(city);
                                     showMain(city);
-                                    switch (desc) {
-                                        case "Clear":
-                                            logicClear(temp_v, logicResult);
-                                            img_description.setImageResource(R.drawable.ic_suns);
-                                            break;
-                                        case "Clouds":
-                                            img_description.setImageResource(R.drawable.ic_cloud);
-                                            logicClouds(temp_v,logicResult);
-                                            break;
-                                        case "Rain":
-                                            img_description.setImageResource(R.drawable.ic_rain);
-                                            logicRain(temp_v,logicResult);
-                                            break;
-                                        case "Snow":
-                                            img_description.setImageResource(R.drawable.ic_snow);
-                                            logicSnow(temp_v,logicResult);
-                                            break;
-                                        default:
-                                            logicError(logicResult);
-                                            break;
-                                    }
                                 } else {
 
                                 }
@@ -178,6 +161,48 @@ public class SecondActivity extends AppCompatActivity {
                             }
 
                         });
+                NetworkServiceDaily.getInstance()
+                        .getDailyApi()
+                        .getDaily(result,UNITSTOMMOROW,APPIDTOMMOROW)
+                        .enqueue(new Callback<Daily>() {
+                            @Override
+                            public void onResponse(Call<Daily> call, Response<Daily> response) {
+                                if (response.isSuccessful()) {
+                                    Daily daily = response.body();
+                                    showDailyMain(daily);
+                                } else {
+
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<Daily> call, Throwable t) {
+                                ((TextView)findViewById(R.id.temp_y)).setText("Query error");
+                                Log.d(TAG, t.getMessage());
+                            }
+
+                        });
+                switch (desc) {
+                    case "Clear":
+                        logicClear(temp_v, logicResult);
+                        img_description.setImageResource(R.drawable.ic_suns);
+                        break;
+                    case "Clouds":
+                        img_description.setImageResource(R.drawable.ic_cloud);
+                        logicClouds(temp_v,logicResult);
+                        break;
+                    case "Rain":
+                        img_description.setImageResource(R.drawable.ic_rain);
+                        logicRain(temp_v,logicResult);
+                        break;
+                    case "Snow":
+                        img_description.setImageResource(R.drawable.ic_snow);
+                        logicSnow(temp_v,logicResult);
+                        break;
+                    default:
+                        logicError(logicResult);
+                        break;
+                }
             }
 
             @Override
@@ -270,6 +295,11 @@ public class SecondActivity extends AppCompatActivity {
     private void showMain(City city){
         String mains = (city.getWeather() !=null) ? city.getWeather().get(0).getMain() : "null";
         desc = mains;
+    }
+
+    private void showDailyMain(Daily daily){
+        String mains = (daily.getList().get(1).getWeather().get(0).getMain() !=null) ? daily.getList().get(1).getWeather().get(0).getMain() : "null";
+        tomorrow_description = mains;
     }
 
     public void logicClear(double temp,TextView textView){
