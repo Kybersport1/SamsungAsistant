@@ -19,10 +19,32 @@
 
     <string name="place_not_found">Sorry, no weather data found.</string>
     <string name="title_activity_maps">Map</string>
-    <string name="zap">Запланировать поездку</string>
-    <string name="openMaps">Показать карту</string>
-    <string name="Set">Открыть настройки</string>
-    <string name="title_activity_settings_to">Settings_to</string>
+    <string name="openMaps">Show Map</string>
+    <string name="Set">Settings</string>
+    <string name="title_activity_settings_to">Settings</string>
+    <string name="Start">Start</string>
+    <string name="loading">Loading…</string>
+    <string name="Deteiled">Read more</string>
+    <string name="text1">There are 8 simple rules that will help you save the coverage of the car for many years.</string>
+    <string name="reg1">1. Avoid washing the car in direct sunlight and immediately after stopping it, this will allow you to avoid sudden temperature changes that adversely affect the paintwork.</string>
+    <string name="reg2">2. Wash the car immediately after it is polluted, otherwise, the dirt will be applied in layers, which will then complicate the washing process.</string>
+    <string name="reg3">3. It is not recommended to wash the car with shampoo more than 2-3 times a month. Frequent exposure of the active substances to the paintwork results in a rapid loss of the original appearance.</string>
+    <string name="reg4">4. First of all, it is worth remembering that the car body should not be washed with ice water, for washing, use only warm water with the addition of high-quality car shampoos.</string>
+    <string name="reg5">5. When washing the car, use only a soft-bristled brush, and it is not recommended to wash the body with a rag or washcloth, as they hold the sand grains that leave small scratches on the paintwork, which later causes the paint to become dull.</string>
+    <string name="reg6">6. Dry dirt on the car body must first be wetted with water and only then proceed to the wash.</string>
+    <string name="reg7">7. The wash solution (water + shampoo) of the car body should be applied from top to bottom, starting from the roof and ending with the rapids, while occasionally rinsing the brush with plenty of water to free the pile from dirt.</string>
+    <string name="reg8">8. After the end of the wash, wipe the body thoroughly with a dry cloth so that there are no traces of moisture on it. The remains of water upon drying form white transparent spots. A special water-absorbing cloth is well suited for drying a car after washing.</string>
+    <string name="red1">Casual sedan</string>
+    <string name="red2">Sicky SUV</string>
+    <string name="red3">Truck</string>
+    <string name="type">Car type :</string>
+    <string name="name1">Name :</string>
+    <string name="save">Save</string>
+    <string name="setings">Settings</string>
+    <string name="hymidity">Humidity :</string>
+    <string name="wind_speed">Wind speed :</string>
+    <string name="max_temp">Maximum temperature :</string>
+    <string name="min_temp">Minimum temperature :</string>
 
     <!--<string-array name="city">-->
     <!--<item>Вінниця</item>-->

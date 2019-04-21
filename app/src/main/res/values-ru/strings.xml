@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Samsung Assistant</string>
+    <string name="name">Имя</string>
+    <string name="acura">Acura</string>
+    <string name="alfa_romeo">Alfa romeo</string>
+    <string name="change_city">Change city</string>
+    <!-- Put your own APP ID here -->
+    <string name="open_weather_maps_app_id">11111</string>
+
+    <string name="weather_sunny">&#xf00d;</string>
+    <string name="weather_clear_night">&#xf02e;</string>
+
+    <string name="weather_foggy">&#xf014;</string>
+    <string name="weather_cloudy">&#xf013;</string>
+    <string name="weather_rainy">&#xf019;</string>
+    <string name="weather_snowy">&#xf01b;</string>
+    <string name="weather_thunder">&#xf01e;</string>
+    <string name="weather_drizzle">&#xf01c;</string>
+
+    <string name="place_not_found">Sorry, no weather data found.</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="openMaps">Показать карту</string>
+    <string name="Set">Открыть настройки</string>
+    <string name="title_activity_settings_to">настройки</string>
+    <string name="Start">Начать</string>
+    <string name="loading">Загрузка....</string>
+    <string name="Deteiled">Подробнее</string>
+    <string name="text1">Тут 8 простых правил которые помогут вам сберечь покрытие машины на долгие годы.</string>
+    <string name="reg1">1.Исключайте мойку автомобиля под прямым солнечным светом и сразу после его остановки, это позволит избежать резких температурных перепадов, которые негативно влияют на лакокрасочное покрытие.</string>
+    <string name="reg2">2. Мойте автомобиль сразу же после его загрязнения, в противном случае, грязь будет накладывается слоями, что впоследствии затруднит процесс мойки.</string>
+    <string name="reg3">3. Не рекомендуется мыть машину шампунем чаще, чем 2–3 раза в месяц. Частое воздействие активных веществ на лакокрасочное покрытие приводит к быстрой потере первоначального вида.</string>
+    <string name="reg4">4. Прежде всего, стоит помнить, что кузов автомобиля необходимо мыть ни в коем случае не ледяной водой, для мойки используйте только теплую воду с добавлением качественных автомобильных шампуней.</string>
+    <string name="reg5">5. Во время мойки автомобиля используйте только щетку с мягким ворсом, при этом не рекомендуется мыть кузов с помощью тряпки или мочалки, так как они удерживают песчинки, которые оставляют мелкие царапины на лакокрасочном покрытии, что впоследствии приводит к тому, что краска становится матовая.</string>
+    <string name="reg6">6. Засохшую грязь на кузове автомобиля предварительно необходимо смочить водой и только потом приступать к мойке.</string>
+    <string name="reg7">7. Раствор для мытья (вода + шампунь) автомобильного кузова необходимо наносить сверху вниз, начиная с крыши и заканчивая порогами, при этом периодически полоскать щетку в большом количестве воды, чтобы освободить ворсу от грязи.</string>
+    <string name="reg8">8. После окончания мойки тщательно протрите кузов сухой тряпкой, чтобы на нем не было следов влаги. Остатки воды при высыхании образуют белые прозрачные пятна. Для высушивания автомобиля после мойки хорошо подходит специальная влагопоглощающая салфетка</string>
+    <string name="red1">Повседневный седан</string>
+    <string name="red2">Заедлый внедорожник</string>
+    <string name="red3">Грузовой автомобиль</string>
+    <string name="type">Тип машины :</string>
+    <string name="name1">Имя :</string>
+    <string name="save">Сохранить</string>
+    <string name="setings">Настройки</string>
+    <string name="hymidity">Влажность :</string>
+    <string name="wind_speed">Скорость ветра :</string>
+    <string name="max_temp">Максимальная температура :</string>
+    <string name="min_temp">Минимальная температура :</string>
+</resources>

@@ -11,27 +11,27 @@
         android:id="@+id/vlaga"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Влажность :"
+        android:text="@string/hymidity"
         android:textColor="@color/colorBlack" />
 
     <TextView
         android:id="@+id/windSpeed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Скорость ветра :"
+        android:text="@string/wind_speed"
         android:textColor="@color/colorBlack" />
 
     <TextView
         android:id="@+id/maxTemp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Максимальная температура :"
+        android:text="@string/max_temp"
         android:textColor="@color/colorBlack" />
 
     <TextView
         android:id="@+id/minTemp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Минимальная температура :"
+        android:text="@string/min_temp"
         android:textColor="@color/colorBlack" />
 </LinearLayout>
